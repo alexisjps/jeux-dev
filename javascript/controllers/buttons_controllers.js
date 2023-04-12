@@ -9,6 +9,16 @@ export default class extends Controller {
         this.buttonTarget.addEventListener("click", (event) => this.showElapsedTime(event));
         this.timeoutId = null;
         this.startTime = new Date();
+        if (this.isMobileDevice()) {
+          this.intervalId = setInterval(() => {
+            this.moveButtonRandomly();
+          }, 400);
+        } else {
+          this.timeoutId = null;
+        }
+    }
+    isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
     showElapsedTime() {
         const elapsedTime = (new Date() - this.startTime) / 1000;
