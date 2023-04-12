@@ -12,7 +12,7 @@ export default class extends Controller {
         if (this.isMobileDevice()) {
           this.intervalId = setInterval(() => {
             this.moveButtonRandomly();
-          }, 400);
+          }, 250);
         } else {
           this.timeoutId = null;
         }
